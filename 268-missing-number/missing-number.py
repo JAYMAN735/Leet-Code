@@ -4,10 +4,12 @@ class Solution(object):
         :type nums: List[int]
         :rtype: int
         """
-        l = len(nums)
+        n = len(nums)
 
-        a = set(nums)
+        missing = n
 
-        for i in range(l+1):
-            if i not in nums:
-                return i
+        for i in range(n):
+            missing ^= i
+            missing ^= nums[i]
+
+        return missing
